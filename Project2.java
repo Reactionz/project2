@@ -135,8 +135,8 @@ public class Project2 {
     static void saveMembersIntoVecAndArr() {
         //Filewriter fout = null;
         BufferedWriter bfout = null;
-        // Member m = new Member();
-        // char[] cArr = null;
+        Member m = new Member();
+        char[] cArr = null;
 
         try {
             bfout = new BufferedWriter(new FileWriter("display.html"));
