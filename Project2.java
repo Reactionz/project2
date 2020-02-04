@@ -7,6 +7,7 @@ import java.util.Vector;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.BufferedWriter;
+import java.util.Collections;
 
 public class Project2 {
     static Scanner scanner = new Scanner(System.in);
@@ -44,7 +45,7 @@ public class Project2 {
         for (int i = 0; i < menu.length; i++) {
             System.out.printf("\n\t\t%s", menu[i]);
         }
-        System.out.printf("\n\n\t\t%s", "Enter a command: or E for quit: ");
+        System.out.printf("\n\n\t\t%s", "Enter a command or E for quit: ");
 
         return scanner.next().trim().charAt(0);
     }
@@ -97,11 +98,17 @@ public class Project2 {
     }
 
     static Member nextMember() {
-        switch(rand.nextInt(2)) {
+        switch(rand.nextInt(5)) {
             case 0:
                 return new Member();
             case 1:
-                // return new Employee();
+                return new Employee();
+            case 2:
+                return new Student();
+            case 3:
+                return new Faculty();
+            case 4:
+                return new Staff();
         }
         return new Member();
     }
@@ -118,7 +125,8 @@ public class Project2 {
     }
 
     static void sortItemsInVecAndArr() {
-
+        Collections.sort(vec);
+        arr = vec.toArray(arr);
     }
 
     static void showMembersInVecAndArr() {
@@ -135,12 +143,14 @@ public class Project2 {
     static void saveMembersIntoVecAndArr() {
         //Filewriter fout = null;
         BufferedWriter bfout = null;
-        Member m = new Member();
-        char[] cArr = null;
+        // Member m = new Member();
+        // char[] cArr = null;
 
         try {
             bfout = new BufferedWriter(new FileWriter("display.html"));
+            bfout.write("<HEAD>\n\t<LINK rel = 'stylesheet' href = 'Project2.css'>\n</HEAD>\n");
             bfout.write("<HTML>\n\t<TABLE>\n");
+            // bfout.write("<TR><TH>ID</TH> <TH>First Name</TH><TH>Last Name</TH><TH>Major/Department</TH> <TH> GPA </TH>");
 
             for (int i = 0; i < vec.size(); i++) {
                 //cArr = vec.get(i).htmlRow().toCharArray();
@@ -155,9 +165,11 @@ public class Project2 {
 
                 bfout.write("\t</TABLE>\n<HTML>\n");
                 bfout.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     static void showContentsOfHTMLFile() {
@@ -165,10 +177,12 @@ public class Project2 {
         int ch;
         try {
             fin = new FileReader("display.html");
-            while ((ch = fin.read()) != 1) {
+            while ((ch = (int) fin.read()) != -1) {
                 System.out.printf("%c", ch);
-                fin.close();
             }
+            fin.close();
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
