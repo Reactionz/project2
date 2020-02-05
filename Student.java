@@ -21,7 +21,7 @@ public class Student extends Member {
 
     // }
     @Override
-	public void generate() {
+    public void generate() {
         // ID = rnd.nextInt(999999999 - 100000000 ) + 100000000;
         // firstName = Names.firstName[rnd.nextInt(180)];
         // lastName = Names.lastName[rnd.nextInt(180)];
@@ -38,7 +38,7 @@ public class Student extends Member {
     }
     @Override
     public String toString(boolean lab) {
-        return (lab ? "STU" : "Student") + super.toString(false) + String.format("%.2f %10s",GPA, major);
+        return (lab ? "" : "") + super.toString(false) + String.format("%.2f %10s",GPA, major);
     }
     @Override
     public String htmlRow() {

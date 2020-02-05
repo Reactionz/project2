@@ -20,7 +20,7 @@ public class Member implements Comparable<Member> {
     }
     
     public String toString(boolean lab) {
-        return (lab ? "MEM" : "") + String.format("%03d-%02d-%04d %10s %-10s", ID/1000000,
+        return (lab ? "" : "") + String.format("%03d-%02d-%04d %10s %-10s", ID/1000000,
         ID/10000 % 100, ID % 10000, firstName, lastName);
     }
 

@@ -17,7 +17,7 @@ public class Staff extends Employee {
     
     @Override
     public String toString(boolean lab) {
-        return (lab ? "STAFF" : "") + super.toString(false) + String.format(" %10s", title);
+        return (lab ? "" : "") + super.toString(false) + String.format(" %10s", title);
     }
 
     @Override
